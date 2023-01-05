@@ -1,0 +1,32 @@
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  padding: 0 8px;
+  cursor: pointer;
+}
+
+.profile-card:hover {
+  .profile-card-img {
+    outline: 3px solid #ffffff;
+  }
+
+  .profile-card-name {
+    color: #ffffff;
+  }
+}
+
+.profile-card-img {
+  min-width: 80px;
+  min-height: 80px;
+  width: 10vw;
+  height: 10vw;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.profile-card-name {
+  width: 100%;
+  text-align: center;
+  margin: 10px 0;
+  color: #808080;
+}
