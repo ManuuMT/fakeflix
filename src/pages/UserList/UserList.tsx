@@ -1,9 +1,22 @@
-import React from 'react';
-import './styles/UserList.scss';
-export interface UserListInterface {}
+import React, { useState } from "react";
+import "./styles/UserList.scss";
+const Splash = React.lazy(() => import("./SplashScreen/SplashScreen"));
 
-const UserList : React.FC<UserListInterface> = () => {
-	return <div className='userlist'>UserList</div >;
+const UserList: React.FC = () => {
+  // * States
+  const [loading, setLoading] = useState(true);
+
+  return (
+    <>
+      {loading ? (
+        <Splash videoEnded={setLoading} />
+      ) : (
+        <>
+          <p>Users List</p>
+        </>
+      )}
+    </>
+  );
 };
 
 export default UserList;

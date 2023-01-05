@@ -4,12 +4,12 @@ import { Home, NotFound, UserList } from "../pages";
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: <UserList />,
     errorElement: <NotFound />,
   },
   {
-    path: "/users",
-    element: <UserList />,
+    path: "/home",
+    element: <Home />,
     errorElement: <NotFound />,
   },
 ]);
