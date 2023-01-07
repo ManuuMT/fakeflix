@@ -8,13 +8,16 @@ const Hero: React.FC<HeroInterface> = () => {
   // * States
   const [heroData, setHeroData] = useState<any>();
   const [videoEnded, setVideoEnded] = useState(false);
+  const [muted, setMuted] = useState(true);
 
   const posterUrl =
     "https://image.tmdb.org/t/p/original/1SEVAgbaah9wE5xoLt4qWPMBdpL.jpg";
 
   // * Life Cycle
   const GetHeroData = async (): Promise<any> => {
-    const url = `${process.env.REACT_APP_URL}62560?api_key=${process.env.REACT_APP_KEY}&language=en-US`;
+    const url = `${import.meta.env.VITE_REACT_APP_URL}62560?api_key=${
+      import.meta.env.VITE_REACT_APP_KEY
+    }&language=en-US`;
     try {
       const res = await axios.get(url, {
         headers: {
@@ -39,7 +42,7 @@ const Hero: React.FC<HeroInterface> = () => {
       ) : (
         <video
           autoPlay
-          muted
+          muted={muted}
           src="video/MrRobotTrailer.mp4"
           onEnded={(e: any) => setVideoEnded(e.target.ended)}
         >
@@ -47,6 +50,7 @@ const Hero: React.FC<HeroInterface> = () => {
         </video>
       )}
       <div className="hero-title">{heroData?.name}</div>
+      <button onClick={() => setMuted(false)}>MUTE OFF</button>
     </div>
   );
 };
