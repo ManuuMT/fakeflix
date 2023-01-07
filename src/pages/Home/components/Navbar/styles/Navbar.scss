@@ -1,5 +1,8 @@
 .navbar {
   display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100vw;
   justify-content: space-between;
   background: transparent;
@@ -51,6 +54,10 @@
   width: 20px;
 }
 
+.navbar-children {
+  cursor: pointer;
+}
+
 .navbar-icon-notif {
   width: 20px;
 }
@@ -59,6 +66,13 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  cursor: pointer;
+}
+
+.navbar-profile:hover {
+  .navbar-icon-arrow {
+    transform: rotate(180deg);
+  }
 }
 
 .navbar-profile-img {
@@ -71,8 +85,4 @@
 .navbar-icon-arrow {
   width: 10px;
   transition: transform 0.3s ease-in-out;
-}
-
-.navbar-icon-arrow:hover {
-  transform: rotate(180deg);
 }
