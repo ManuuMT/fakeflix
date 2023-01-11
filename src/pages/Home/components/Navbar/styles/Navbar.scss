@@ -6,6 +6,7 @@
   width: 100vw;
   justify-content: space-between;
   background: transparent;
+  z-index: 1;
 }
 
 .navbar-left {
@@ -84,5 +85,5 @@
 
 .navbar-icon-arrow {
   width: 10px;
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.2s ease-in-out;
 }
