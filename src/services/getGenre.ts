@@ -7,68 +7,50 @@ export const getGenre = async (genreID: string) => {
   return axios.get(apiUrl).then((res) => res.data.results);
 };
 
-export const GENRES = {
-  Action: {
-    id: "10759",
-  },
+type DictionaryRawValue = number | string;
+export type Dictionary<A extends DictionaryRawValue, B> = {
+  [rawValue in A]: B;
+};
 
-  Animation: {
-    id: "16",
-  },
+export enum GENRES {
+  Action = "Action",
+  Animation = "Animation",
+  Comedy = "Comedy",
+  Crime = "Crime",
+  Documentary = "Documentary",
+  Drama = "Drama",
+  Family = "Family",
+  Kids = "Kids",
+  Mistery = "Mistery",
+  News = "News",
+  Reality = "Reality",
+  Fantasy = "Fantasy",
+  Soap = "Soap",
+  Talk = "Talk",
+  WarPolitics = "WarPolitics",
+  Western = "Western",
+}
 
-  Comedy: {
-    id: "35",
-  },
+interface Genre {
+  title: string;
+  id: string;
+}
 
-  Crime: {
-    id: "80",
-  },
-
-  Documentary: {
-    id: "99",
-  },
-
-  Drama: {
-    id: "18",
-  },
-
-  Family: {
-    id: "10751",
-  },
-
-  Kids: {
-    id: "10762",
-  },
-
-  Mystery: {
-    id: "9648",
-  },
-
-  News: {
-    id: "10763",
-  },
-
-  Reality: {
-    id: "10764",
-  },
-
-  Fantasy: {
-    id: "10765",
-  },
-
-  Soap: {
-    id: "10766",
-  },
-
-  Talk: {
-    id: "10767",
-  },
-
-  WarPolitics: {
-    id: "10768",
-  },
-
-  Western: {
-    id: "37",
-  },
+export const GenreDictionary: Dictionary<string, Genre> = {
+  [GENRES.Action]: { title: "Action & Adventure", id: "10759" },
+  [GENRES.Animation]: { title: "Animated", id: "16" },
+  [GENRES.Comedy]: { title: "TV Comedies", id: "35" },
+  [GENRES.Crime]: { title: "Crime TV Shows", id: "80" },
+  [GENRES.Documentary]: { title: "Documentals", id: "99" },
+  [GENRES.Drama]: { title: "Dramas", id: "18" },
+  [GENRES.Family]: { title: "Family friendly", id: "10751" },
+  [GENRES.Kids]: { title: "Kids", id: "10762" },
+  [GENRES.Mistery]: { title: "Mistery TV Shows", id: "9648" },
+  [GENRES.News]: { title: "News", id: "10763" },
+  [GENRES.Reality]: { title: "Reality shows", id: "10764" },
+  [GENRES.Fantasy]: { title: "TV Sci-Fi & Fantasy", id: "10765" },
+  [GENRES.Soap]: { title: "Soap Opera", id: "10766" },
+  [GENRES.Talk]: { title: "Talk", id: "10767" },
+  [GENRES.WarPolitics]: { title: "War & Politics", id: "10768" },
+  [GENRES.Western]: { title: "Western", id: "37" },
 };

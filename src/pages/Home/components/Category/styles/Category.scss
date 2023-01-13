@@ -6,6 +6,15 @@
   box-sizing: border-box;
 }
 
+.category {
+  margin-bottom: 25px;
+}
+
+.category-title {
+  margin: 0px 0 0 var(--slider-padding);
+  width: 90%;
+}
+
 .container {
   width: 100%;
   display: flex;
@@ -22,9 +31,11 @@
 
 .slider > .poster {
   flex: 0 0 16.6%;
-  padding: 0.5rem;
+  padding: 0.3rem;
   max-width: 16.6%;
   user-select: none;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .handle {
@@ -36,7 +47,7 @@
   color: #fff;
   font-size: 80px;
   z-index: 1;
-  margin: 0.5rem 0;
+  margin: 0.3rem 0;
   cursor: pointer;
 }
 
