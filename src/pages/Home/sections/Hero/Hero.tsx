@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./styles/Hero.scss";
-import axios from "axios";
 import iconReload from "../../../../assets/icons/iconReload.png";
 import iconMute from "../../../../assets/icons/iconMute.png";
 import iconUnmute from "../../../../assets/icons/iconUnmute.png";
@@ -12,34 +11,10 @@ export interface HeroInterface {}
 
 const Hero: React.FC<HeroInterface> = () => {
   // * States
-  const [heroData, setHeroData] = useState<any>();
   const [videoEnded, setVideoEnded] = useState(false);
   const [muted, setMuted] = useState(true);
-
   const posterUrl =
     "https://image.tmdb.org/t/p/original/1SEVAgbaah9wE5xoLt4qWPMBdpL.jpg";
-
-  // * Life Cycle
-  const GetHeroData = async (): Promise<any> => {
-    const url = `${import.meta.env.VITE_REACT_APP_URL}62560?api_key=${
-      import.meta.env.VITE_REACT_APP_KEY
-    }&language=en-US`;
-    try {
-      const res = await axios.get(url, {
-        headers: {
-          Accept: "application/json",
-        },
-      });
-      setHeroData(res.data);
-    } catch (error) {
-      if (axios.isAxiosError(error)) console.error(error);
-    }
-  };
-
-  // * Life Cycle
-  useEffect(() => {
-    GetHeroData();
-  }, []);
 
   return (
     <div className="hero">
