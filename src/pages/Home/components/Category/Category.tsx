@@ -10,7 +10,7 @@ export interface CategoryInterface {
 
 const Category: React.FC<CategoryInterface> = (props) => {
   // * States
-  const [data, setData] = useState<any>();
+  const [data, setData] = useState<any[]>();
   const imgUrl = "https://image.tmdb.org/t/p/original/";
   const sliderRef = useRef<HTMLDivElement>(null);
 
@@ -26,13 +26,25 @@ const Category: React.FC<CategoryInterface> = (props) => {
   const HandleClick = (move: SliderMoves) => {
     const slider = sliderRef.current;
     const sliderIndex = Number(
-      slider?.style.getPropertyValue("--slider-index")
+      getComputedStyle(slider as Element).getPropertyValue("--slider-index")
+    );
+    const imgPerScreen = Number(
+      getComputedStyle(slider as Element).getPropertyValue("--imgs-per-screen")
     );
 
-    if (move === SliderMoves.Right)
-      slider?.style.setProperty("--slider-index", String(sliderIndex + 1));
-    if (move === SliderMoves.Left)
-      slider?.style.setProperty("--slider-index", String(sliderIndex - 1));
+    if (move === SliderMoves.Right) {
+      if (sliderIndex + 1 >= data!.length / imgPerScreen)
+        slider?.style.setProperty("--slider-index", "0");
+      else slider?.style.setProperty("--slider-index", String(sliderIndex + 1));
+    }
+    if (move === SliderMoves.Left) {
+      if (sliderIndex - 1 < 0)
+        slider?.style.setProperty(
+          "--slider-index",
+          String(data!.length / imgPerScreen - 1)
+        );
+      else slider?.style.setProperty("--slider-index", String(sliderIndex - 1));
+    }
   };
 
   useEffect(() => {

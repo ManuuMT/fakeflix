@@ -23,6 +23,7 @@
 
 .slider {
   --slider-index: 0;
+  --imgs-per-screen: 5;
   display: flex;
   width: 90%;
   transform: translateX(calc(var(--slider-index) * -100%));
@@ -30,9 +31,9 @@
 }
 
 .slider > .poster {
-  flex: 0 0 16.6%;
+  flex: 0 0 calc(100% / var(--imgs-per-screen));
+  max-width: calc(100% / var(--imgs-per-screen));
   padding: 0.3rem;
-  max-width: 16.6%;
   user-select: none;
   border-radius: 10px;
   overflow: hidden;
@@ -65,4 +66,16 @@
 
 .container:hover .handle-symbol {
   opacity: 1;
+}
+
+@media (max-width: 1024px) {
+  .slider {
+    --imgs-per-screen: 4;
+  }
+}
+
+@media (max-width: 768px) {
+  .slider {
+    --imgs-per-screen: 2;
+  }
 }
