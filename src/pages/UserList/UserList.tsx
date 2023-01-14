@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ProfileCard } from "./components/ProfileCard";
 import { SplashScreen } from "./components/SplashScreen";
-import "./styles/UserList.scss";
+import "./UserList.scss";
 import { InitialProfileList, Profile } from "./UserList+Helper";
 
 const UserList: React.FC = () => {

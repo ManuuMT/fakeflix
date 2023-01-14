@@ -1,9 +1,9 @@
-import React from 'react';
-import './styles/Movie.scss';
+import React from "react";
+import "./Movie.scss";
 export interface MovieInterface {}
 
-const Movie : React.FC<MovieInterface> = () => {
-	return <div className='movie'>Movie</div >;
+const Movie: React.FC<MovieInterface> = () => {
+  return <div className="movie">Movie</div>;
 };
 
 export default Movie;

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { GENRES, getGenre, GenreDictionary } from "../../../../services/";
-import "./styles/Category.scss";
+import "./Category.scss";
 import { SliderMoves } from "./Category+Helper";
 
 export interface CategoryInterface {

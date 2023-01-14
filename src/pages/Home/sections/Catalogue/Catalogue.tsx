@@ -1,6 +1,6 @@
 import { GENRES } from "../../../../services/getGenre";
 import { Category } from "../../components/Category";
-import "./styles/Catalogue.scss";
+import "./Catalogue.scss";
 
 export interface CatalogueInterface {}
 

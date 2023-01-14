@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./styles/Hero.scss";
+import "./Hero.scss";
 import iconReload from "../../../../assets/icons/iconReload.png";
 import iconMute from "../../../../assets/icons/iconMute.png";
 import iconUnmute from "../../../../assets/icons/iconUnmute.png";

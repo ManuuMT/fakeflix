@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles/NotFound.scss";
+import "./NotFound.scss";
 import { useRouteError } from "react-router-dom";
 export interface NotFoundInterface {}
 

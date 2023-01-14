@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles/Navbar.scss";
+import "./Navbar.scss";
 import logo from "../../../../assets/logo.png";
 import iconSearch from "../../../../assets/icons/iconSearch.png";
 import iconNotif from "../../../../assets/icons/iconNotif.png";

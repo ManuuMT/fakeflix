@@ -1,6 +1,6 @@
 import React from "react";
 import { Profile } from "../../UserList+Helper";
-import "./styles/ProfileCard.scss";
+import "./ProfileCard.scss";
 import { Link } from "react-router-dom";
 
 interface ProfileCardInterface {

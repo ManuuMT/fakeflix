@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles/SplashScreen.scss";
+import "./SplashScreen.scss";
 
 interface SplashInterface {
   videoEnded: (end: boolean) => void;

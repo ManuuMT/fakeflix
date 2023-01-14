@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles/Home.scss";
+import "./Home.scss";
 import { Navbar } from "./components";
 import { Hero, Catalogue } from "./sections";
 
