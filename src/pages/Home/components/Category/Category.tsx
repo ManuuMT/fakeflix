@@ -3,6 +3,7 @@ import axios from "axios";
 import { GENRES, getGenre, GenreDictionary } from "../../../../services/";
 import "./Category.scss";
 import { SliderMoves } from "./Category+Helper";
+import { Poster } from "../Poster";
 
 export interface CategoryInterface {
   genre: GENRES;
@@ -11,7 +12,6 @@ export interface CategoryInterface {
 const Category: React.FC<CategoryInterface> = (props) => {
   // * States
   const [data, setData] = useState<any[]>();
-  const imgUrl = "https://image.tmdb.org/t/p/original/";
   const sliderRef = useRef<HTMLDivElement>(null);
 
   const GetData = async (): Promise<any> => {
@@ -63,12 +63,9 @@ const Category: React.FC<CategoryInterface> = (props) => {
         </div>
         <div className="slider" ref={sliderRef}>
           {data &&
-            data.map((tvshow: any, i: number) => {
-              const src = `${imgUrl}${tvshow.poster_path}`;
-              return (
-                <img className="poster" src={src} alt={tvshow.name} key={i} />
-              );
-            })}
+            data.map((tvshow: any, i: number) => (
+              <Poster data={tvshow} key={i} />
+            ))}
         </div>
         <div
           className="handle handle-right"

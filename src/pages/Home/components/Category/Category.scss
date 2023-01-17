@@ -30,15 +30,6 @@
   transition: transform 0.4s ease-in-out;
 }
 
-.slider > .poster {
-  flex: 0 0 calc(100% / var(--imgs-per-screen));
-  max-width: calc(100% / var(--imgs-per-screen));
-  padding: 0.3rem;
-  user-select: none;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
 .handle {
   width: var(--slider-padding);
   background: rgba(0, 0, 0, 0.8);
