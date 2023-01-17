@@ -15,16 +15,18 @@ const UserList: React.FC = () => {
         <SplashScreen videoEnded={setLoading} />
       ) : (
         <div className="users">
-          <div className="users-title">
-            <h1>Who are you? Choose your profile</h1>
-          </div>
-          <div className="users-list">
-            {users.map((user: Profile, i) => (
-              <ProfileCard profile={user} key={i} />
-            ))}
-          </div>
+          <div className="users-main">
+            <div className="users-title">
+              <h1>Who's watching?</h1>
+            </div>
+            <div className="users-list">
+              {users.map((user: Profile, i) => (
+                <ProfileCard profile={user} key={i} />
+              ))}
+            </div>
 
-          <button className="users-admin">Admin profiles</button>
+            <button className="users-admin">Manage profiles</button>
+          </div>
         </div>
       )}
     </>

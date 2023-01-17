@@ -32,7 +32,7 @@ export const InitialProfileList: Profile[] = [
   },
   {
     id: 3,
-    name: "Children",
+    name: "Kids",
     icon: {
       src: Profile3,
       alt: "Profile3",
