@@ -9,7 +9,6 @@ interface ProfileCardInterface {
 
 const ProfileCard: React.FC<ProfileCardInterface> = (props) => {
   return (
-    // style={{ textDecoration: "none" }}
     <div className="profile-card">
       <Link to="/home">
         <img className="profile-card-img" {...props.profile.icon} />
