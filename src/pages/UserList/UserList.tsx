@@ -11,7 +11,7 @@ import "./UserList.scss";
 
 const UserList: React.FC = () => {
   // * States
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [openModal, setOpenModal] = useState(false);
 
   const stateUsers = useAppSelector(selectUsers);

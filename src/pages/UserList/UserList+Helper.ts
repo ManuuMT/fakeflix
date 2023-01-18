@@ -4,7 +4,7 @@ type IconDTO = {
 };
 
 export interface Profile {
-  id: number;
+  id: string;
   name: string;
   icon: IconDTO;
 }

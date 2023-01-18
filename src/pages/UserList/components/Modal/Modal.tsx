@@ -20,7 +20,7 @@ const Modal: React.FC<ModalInterface> = (props) => {
   const AddUser = () => {
     dispatch(
       createUser({
-        id: 6,
+        id: crypto.randomUUID(),
         name: value || "John Doe",
         icon: {
           src: Profile5,

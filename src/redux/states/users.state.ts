@@ -7,7 +7,7 @@ import { RootState } from "../store";
 
 const initialState: Profile[] = [
   {
-    id: 1,
+    id: crypto.randomUUID(),
     name: "ManuDev",
     icon: {
       src: Profile1,
@@ -15,7 +15,7 @@ const initialState: Profile[] = [
     },
   },
   {
-    id: 2,
+    id: crypto.randomUUID(),
     name: "Some friend",
     icon: {
       src: Profile2,
@@ -23,7 +23,7 @@ const initialState: Profile[] = [
     },
   },
   {
-    id: 3,
+    id: crypto.randomUUID(),
     name: "Kids",
     icon: {
       src: Profile3,
