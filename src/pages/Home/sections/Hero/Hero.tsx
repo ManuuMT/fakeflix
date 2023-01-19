@@ -6,6 +6,7 @@ import iconUnmute from "../../../../assets/icons/iconUnmute.png";
 import robotLogo from "../../../../assets/mrRobotLogo.png";
 import iconArrow from "../../../../assets/icons/iconArrow.png";
 import iconInfo from "../../../../assets/icons/iconInfo.png";
+import mrRobotBack from "../../../../assets/mrRobotBack.jpg";
 
 export interface HeroInterface {}
 
@@ -13,8 +14,6 @@ const Hero: React.FC<HeroInterface> = () => {
   // * States
   const [videoEnded, setVideoEnded] = useState(false);
   const [muted, setMuted] = useState(true);
-  const posterUrl =
-    "https://image.tmdb.org/t/p/original/1SEVAgbaah9wE5xoLt4qWPMBdpL.jpg";
 
   return (
     <div className="hero">
@@ -36,7 +35,7 @@ const Hero: React.FC<HeroInterface> = () => {
         Más información
       </button>
       {videoEnded ? (
-        <img className="hero-poster" src={posterUrl} alt="robot" />
+        <img className="hero-poster" src={mrRobotBack} alt="robot" />
       ) : (
         <video
           autoPlay
