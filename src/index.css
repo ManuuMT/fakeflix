@@ -22,6 +22,30 @@ body {
   background: #141414;
 }
 
+@font-face {
+  font-family: "NetflixLight";
+  src: local("NetflixSansLight"),
+  url("./fonts/NetflixSansLight.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "NetflixRegular";
+  src: local("NetflixSansRegular"),
+  url("./fonts/NetflixSansRegular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "NetflixMedium";
+  src: local("NetflixSansMedium"),
+  url("./fonts/NetflixSansMedium.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "NetflixBold";
+  src: local("NetflixSansBold"),
+  url("./fonts/NetflixSansBold.woff2") format("woff2");
+}
+
 /* a {
   font-weight: 500;
   color: #646cff;
