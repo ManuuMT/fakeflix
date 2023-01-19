@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from "react";
+import { Link } from "react-router-dom";
 import iconPlus from "../../assets/icons/iconPlus.png";
-import Profile5 from "../../assets/profile-icons/profile-05.png";
-import { useAppDispatch, useAppSelector } from "../../redux/states/hooks";
-import { modifyUser, selectUsers } from "../../redux/states/users.state";
+import { useAppSelector } from "../../redux/states/hooks";
+import { selectUsers } from "../../redux/states/users.state";
 import { Modal } from "./components/Modal";
 import { ProfileCard } from "./components/ProfileCard";
 import { SplashScreen } from "./components/SplashScreen";
@@ -15,20 +15,6 @@ const UserList: React.FC = () => {
   const [openModal, setOpenModal] = useState(false);
 
   const stateUsers = useAppSelector(selectUsers);
-  const dispatch = useAppDispatch();
-
-  const ModifyUser = () => {
-    dispatch(
-      modifyUser({
-        id: 1,
-        name: "Manu Gato",
-        icon: {
-          src: Profile5,
-          alt: "Profile5",
-        },
-      })
-    );
-  };
 
   return (
     <Fragment>
@@ -45,8 +31,13 @@ const UserList: React.FC = () => {
                   <h1>Who's watching?</h1>
                 </div>
                 <div className="users-list">
-                  {stateUsers.map((user: Profile, i) => (
-                    <ProfileCard profile={user} key={i} />
+                  {stateUsers.map((user: Profile) => (
+                    <ProfileCard
+                      profile={user}
+                      key={user.id}
+                      id={user.id}
+                      editMode={false}
+                    />
                   ))}
                   <div
                     className="profile-card"
@@ -60,16 +51,9 @@ const UserList: React.FC = () => {
                     <div className="profile-card-name">Add Profile</div>
                   </div>
                 </div>
-
-                <button
-                  className="users-admin"
-                  onClick={() => setOpenModal(true)}
-                >
-                  Manage profiles
-                </button>
-                <button className="users-admin" onClick={ModifyUser}>
-                  Modify user 1
-                </button>
+                <Link to="/ManageProfiles">
+                  <div className="users-admin">Manage profiles</div>
+                </Link>
               </div>
             </div>
           )}

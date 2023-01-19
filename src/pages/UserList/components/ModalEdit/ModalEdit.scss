@@ -1,0 +1,22 @@
+@import "../Modal/Modal.scss";
+
+.edit-modal {
+  @extend .add-modal;
+}
+
+.edit-modal-container {
+  @extend .add-modal-container;
+}
+
+.edit-modal-content {
+  @extend .add-modal-content;
+}
+
+.edit-modal-title {
+  @extend .add-modal-title;
+  margin: 0;
+}
+
+.edit-modal-divider {
+  @extend .add-modal-divider;
+}
