@@ -24,7 +24,7 @@ const ModalEdit: React.FC<ModalEditInterface> = (props) => {
       modifyUser({
         ...user,
         id: user?.id,
-        name: value,
+        name: value || "John Doe",
       })
     );
     CloseModal();

@@ -16,6 +16,9 @@ const UserList: React.FC = () => {
 
   const stateUsers = useAppSelector(selectUsers);
 
+  // * Methods
+  const HandleClick = (id: string) => window.localStorage.setItem("userID", id);
+
   return (
     <Fragment>
       {loading ? (
@@ -32,12 +35,14 @@ const UserList: React.FC = () => {
                 </div>
                 <div className="users-list">
                   {stateUsers.map((user: Profile) => (
-                    <ProfileCard
-                      profile={user}
-                      key={user.id}
-                      id={user.id}
-                      editMode={false}
-                    />
+                    <Link to="/home">
+                      <ProfileCard
+                        profile={user}
+                        key={user.id}
+                        editMode={false}
+                        onClick={() => HandleClick(user.id)}
+                      />
+                    </Link>
                   ))}
                   <div
                     className="profile-card"

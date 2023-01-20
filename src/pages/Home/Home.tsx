@@ -1,7 +1,7 @@
 import React from "react";
-import "./Home.scss";
 import { Navbar } from "./components";
-import { Hero, Catalogue } from "./sections";
+import "./Home.scss";
+import { Catalogue, Hero } from "./sections";
 
 export interface HomeInterface {}
 

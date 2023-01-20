@@ -33,10 +33,9 @@ const ManageProfiles: React.FC = () => {
               <ProfileCard
                 profile={user}
                 key={user.id}
-                id={user.id}
                 editMode={true}
-                select={(id: string) => {
-                  setSelected(id);
+                onClick={() => {
+                  setSelected(user.id);
                   setOpenEditModal(true);
                 }}
               />
