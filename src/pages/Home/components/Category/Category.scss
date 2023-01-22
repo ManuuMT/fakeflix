@@ -23,7 +23,7 @@
 
 .slider {
   --slider-index: 0;
-  --imgs-per-screen: 5;
+  --imgs-per-screen: 6;
   display: flex;
   width: 90%;
   transform: translateX(calc(var(--slider-index) * -100%));

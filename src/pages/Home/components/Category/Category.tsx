@@ -1,9 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import axios from "axios";
-import { GENRES, getGenre, GenreDictionary } from "../../../../services/";
-import "./Category.scss";
-import { SliderMoves } from "./Category+Helper";
+import { GenreDictionary, GENRES, getGenre } from "../../../../services/";
 import { Poster } from "../Poster";
+import { SliderMoves } from "./Category+Helper";
+import "./Category.scss";
 
 export interface CategoryInterface {
   genre: GENRES;
@@ -19,7 +18,7 @@ const Category: React.FC<CategoryInterface> = (props) => {
       const genre = await getGenre(GenreDictionary[props.genre].id);
       setData(genre);
     } catch (error) {
-      if (axios.isAxiosError(error)) console.error(error);
+      console.error(error);
     }
   };
 

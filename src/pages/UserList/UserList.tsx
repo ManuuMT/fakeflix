@@ -35,10 +35,9 @@ const UserList: React.FC = () => {
                 </div>
                 <div className="users-list">
                   {stateUsers.map((user: Profile) => (
-                    <Link to="/home">
+                    <Link to="/home" key={user.id}>
                       <ProfileCard
                         profile={user}
-                        key={user.id}
                         editMode={false}
                         onClick={() => HandleClick(user.id)}
                       />

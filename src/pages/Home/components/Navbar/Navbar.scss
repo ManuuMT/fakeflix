@@ -6,7 +6,8 @@
   width: 100vw;
   justify-content: space-between;
   background: transparent;
-  z-index: 1;
+  z-index: 2;
+  background: #141414;
 }
 
 .navbar-left {
@@ -16,8 +17,9 @@
 }
 
 .navbar-logo-img {
-  width: 125px;
+  width: 115px;
   cursor: pointer;
+  margin-left: 3rem;
 }
 
 .navbar-list {
