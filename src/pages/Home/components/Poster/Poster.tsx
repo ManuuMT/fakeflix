@@ -1,39 +1,51 @@
-import React from "react";
-import { useHover } from "../../../../hooks";
-import "./Poster.scss";
+import React, { useEffect, useState } from "react";
+import iconArrowDown from "../../../../assets/icons/iconArrowDown.png";
 import iconPlay from "../../../../assets/icons/iconPlay.png";
 import iconPlus from "../../../../assets/icons/iconPlusSimple.png";
 import iconThumb from "../../../../assets/icons/iconThumbUp.png";
-import iconArrowDown from "../../../../assets/icons/iconArrowDown.png";
+import { useHover } from "../../../../hooks";
+import { getShow } from "../../../../services";
+import "./Poster.scss";
 
-export interface PosterInterface {
-  data: any;
+interface PosterInterface {
+  poster: string;
+  showID: string;
 }
 
 const Poster: React.FC<PosterInterface> = (props) => {
-  const imgUrl = "https://image.tmdb.org/t/p/original/";
-  const posterSrc = `${imgUrl}${props.data.poster_path}`;
-
   // * States
+  const [data, setData] = useState<any>();
   const [hoverRef, isHovered] = useHover<HTMLDivElement>();
 
+  const imgUrl = "https://image.tmdb.org/t/p/original/";
+  const posterSrc = `${imgUrl}${props.poster}`;
+
+  // * Methods
+  const GetData = async (): Promise<any> => {
+    try {
+      const show = await getShow(props.showID);
+      setData(show);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // * Life Cycle
+  useEffect(() => {
+    if (isHovered && !data) {
+      GetData();
+    }
+  }, [isHovered]);
+
   return (
-    props.data && (
-      <div className="poster-container">
-        <div
-          ref={hoverRef}
-          className={`poster-card ${isHovered ? "active" : ""}`}
-        >
-          {
-            <img
-              className="poster-card-img"
-              src={posterSrc}
-              alt={props.data.name}
-            />
-          }
+    <div className="poster-container" ref={hoverRef}>
+      <div className={`poster-card ${isHovered ? "active" : ""}`}>
+        <img className="poster-card-img" src={posterSrc} alt="tvshow" />
+
+        {data ? (
           <div className="poster-card-info">
             <div className="pc-icons">
-              <div className="pc-icons-main">
+              <div className="pc-icons-menu">
                 <div className="pc-icon-play">
                   <img className="pc-icon-play-img" alt="play" src={iconPlay} />
                 </div>
@@ -51,13 +63,6 @@ const Poster: React.FC<PosterInterface> = (props) => {
                     src={iconThumb}
                   />
                 </div>
-                <div className="pc-icon-default pc-cross">
-                  <img
-                    className="pc-icon-default-img"
-                    alt="add"
-                    src={iconPlus}
-                  />
-                </div>
               </div>
               <div className="pc-icon-default pc-arrow">
                 <img
@@ -66,15 +71,24 @@ const Poster: React.FC<PosterInterface> = (props) => {
                   src={iconArrowDown}
                 />
               </div>
-              <div className="pc-icons-menu"></div>
             </div>
-            <div className="pc-seasons">Seasons</div>
+            <div className="pc-seasons">
+              <div className="pc-seasons-match">99% Match </div>
+              <div className="pc-seasons-clasif"> 13 +</div>
+              <div className="pc-seasons-episodes">
+                {`${data.number_of_seasons} Seasons`}
+              </div>
+              <div className="pc-seasons-quality"> HD</div>
+            </div>
             <div className="pc-genres">Genres</div>
           </div>
-        </div>
-        <img className="poster-img" src={posterSrc} alt={props.data.name} />
+        ) : (
+          <span>"Loading..."</span>
+        )}
       </div>
-    )
+
+      <img className="poster-img" src={posterSrc} alt="tvshow" />
+    </div>
   );
 };
 

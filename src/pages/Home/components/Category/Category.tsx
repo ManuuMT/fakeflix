@@ -13,6 +13,7 @@ const Category: React.FC<CategoryInterface> = (props) => {
   const [data, setData] = useState<any[]>();
   const sliderRef = useRef<HTMLDivElement>(null);
 
+  // * Methods
   const GetData = async (): Promise<any> => {
     try {
       const genre = await getGenre(GenreDictionary[props.genre].id);
@@ -46,6 +47,7 @@ const Category: React.FC<CategoryInterface> = (props) => {
     }
   };
 
+  // * Life Cycle
   useEffect(() => {
     GetData();
   }, []);
@@ -62,8 +64,12 @@ const Category: React.FC<CategoryInterface> = (props) => {
         </div>
         <div className="slider" ref={sliderRef}>
           {data &&
-            data.map((tvshow: any, i: number) => (
-              <Poster data={tvshow} key={i} />
+            data.map((tvshow: any) => (
+              <Poster
+                showID={tvshow.id}
+                poster={tvshow.poster_path}
+                key={tvshow.id}
+              />
             ))}
         </div>
         <div
