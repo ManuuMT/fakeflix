@@ -41,16 +41,17 @@ $filterWhite: brightness(0) saturate(100%) invert(98%) sepia(0%) saturate(0%)
 .poster-card-info {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   position: absolute;
   bottom: 0;
   background: #141414;
   width: 100%;
-  height: 30%;
+  height: 35%;
 }
 
 .pc-icons {
   display: flex;
-  margin: 10px 0 10px 10px;
+  margin: 0px 0 10px 10px;
 }
 
 .pc-icons-menu {
@@ -132,4 +133,28 @@ $filterWhite: brightness(0) saturate(100%) invert(98%) sepia(0%) saturate(0%)
   padding: 0 3px;
   font-size: 8px;
   border-radius: 2px;
+}
+
+.pc-genres {
+  display: flex;
+  gap: 2px;
+  margin: 10px 10px 0 10px;
+}
+
+.pc-genres-single {
+  display: flex;
+  align-items: center;
+}
+
+.pc-genres-name {
+  font-size: 9px;
+  margin-right: 1px;
+}
+
+.pc-genre-divider {
+  width: 3px;
+  height: 3px;
+  border-radius: 2px;
+  background: #808080;
+  margin: 0 3px;
 }

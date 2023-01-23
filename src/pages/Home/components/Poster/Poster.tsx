@@ -74,13 +74,23 @@ const Poster: React.FC<PosterInterface> = (props) => {
             </div>
             <div className="pc-seasons">
               <div className="pc-seasons-match">99% Match </div>
-              <div className="pc-seasons-clasif"> 13 +</div>
+              <div className="pc-seasons-clasif">13 +</div>
               <div className="pc-seasons-episodes">
                 {`${data.number_of_seasons} Seasons`}
               </div>
-              <div className="pc-seasons-quality"> HD</div>
+              <div className="pc-seasons-quality">HD</div>
             </div>
-            <div className="pc-genres">Genres</div>
+            <div className="pc-genres">
+              {data.genres.map((genre: any, i: number) => {
+                if (i < 3)
+                  return (
+                    <div className="pc-genres-single" key={i}>
+                      <div className="pc-genres-name">{genre.name}</div>
+                      <div className="pc-genre-divider" />
+                    </div>
+                  );
+              })}
+            </div>
           </div>
         ) : (
           <span>"Loading..."</span>
