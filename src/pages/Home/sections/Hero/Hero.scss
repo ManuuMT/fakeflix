@@ -1,3 +1,8 @@
+.white {
+  filter: brightness(0) saturate(100%) invert(98%) sepia(0%) saturate(0%)
+    hue-rotate(338deg) brightness(101%) contrast(104%);
+}
+
 $filterWhite: brightness(0) saturate(100%) invert(98%) sepia(0%) saturate(0%)
   hue-rotate(338deg) brightness(101%) contrast(104%);
 
