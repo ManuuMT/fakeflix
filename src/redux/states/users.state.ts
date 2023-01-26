@@ -7,7 +7,7 @@ import { RootState } from "../store";
 
 const initialState: Profile[] = [
   {
-    id: crypto.randomUUID(),
+    id: "1",
     name: "ManuDev",
     icon: {
       src: Profile1,
@@ -15,7 +15,7 @@ const initialState: Profile[] = [
     },
   },
   {
-    id: crypto.randomUUID(),
+    id: "2",
     name: "Some friend",
     icon: {
       src: Profile2,
@@ -23,7 +23,7 @@ const initialState: Profile[] = [
     },
   },
   {
-    id: crypto.randomUUID(),
+    id: "3",
     name: "Kids",
     icon: {
       src: Profile3,
@@ -32,20 +32,31 @@ const initialState: Profile[] = [
   },
 ];
 
+const SetLocalStorage = (key: string, value: any) =>
+  localStorage.setItem(key, JSON.stringify(value));
+
+const GetLocalStorage = (key: string) => localStorage.getItem(key);
+
 export const usersSlice = createSlice({
   name: "users",
-  initialState,
+  initialState: GetLocalStorage("userList")
+    ? JSON.parse(GetLocalStorage("userList") as string)
+    : initialState,
   reducers: {
     createUser: (state, action) => {
+      SetLocalStorage("userList", state);
       state.push(action.payload);
     },
     modifyUser: (state, action) => {
-      const { id, name, icon } = action.payload;
-      const foundUser = state.find((user) => user.id === id);
-      if (foundUser) {
-        foundUser.name = name;
-        foundUser.icon = icon;
-      }
+      const editedUser = action.payload;
+      const foundUser = state.find(
+        (user: Profile) => user.id === editedUser.id
+      );
+
+      if (editedUser.name) foundUser.name = editedUser.name;
+      if (editedUser.icon) foundUser.icon = editedUser.icon;
+
+      SetLocalStorage("userList", state);
     },
     resetUser: () => initialState,
   },

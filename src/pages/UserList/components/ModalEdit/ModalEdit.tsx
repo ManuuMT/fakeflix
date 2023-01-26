@@ -22,8 +22,7 @@ const ModalEdit: React.FC<ModalEditInterface> = (props) => {
   const ModifyUser = () => {
     dispatch(
       modifyUser({
-        ...user,
-        id: user?.id,
+        id: props.editID,
         name: value || "John Doe",
       })
     );
@@ -32,9 +31,11 @@ const ModalEdit: React.FC<ModalEditInterface> = (props) => {
 
   // * Life Cycle
   useEffect(() => {
-    const foundUser = stateUsers.find((user) => user.id === props.editID);
+    const foundUser = stateUsers.find(
+      (user: Profile) => user.id === props.editID
+    );
     setUser(foundUser);
-    setValue(foundUser?.name || "");
+    setValue(foundUser?.name);
   }, []);
 
   return (
