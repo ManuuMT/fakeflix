@@ -7,6 +7,10 @@
   justify-content: space-between;
   background: transparent;
   z-index: 2;
+  transition: all 0.6s ease-in-out;
+}
+
+.nav-color {
   background: #141414;
 }
 
@@ -88,4 +92,17 @@
 .navbar-icon-arrow {
   width: 10px;
   transition: transform 0.2s ease-in-out;
+}
+
+.nav-profile-menu {
+  display: flex;
+  flex-direction: column;
+  top: 100%;
+  right: 5%;
+  position: absolute;
+  opacity: 0;
+}
+
+.nav-profile-menu.active {
+  opacity: 1;
 }
