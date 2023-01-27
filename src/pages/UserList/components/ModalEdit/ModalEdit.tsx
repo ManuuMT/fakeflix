@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../../redux";
-import { modifyUser, selectUsers } from "../../../../redux/states/users.state";
+import {
+  deleteUser,
+  modifyUser,
+  selectUsers,
+} from "../../../../redux/states/users.state";
 import { Profile } from "../../UserList+Helper";
 import "./ModalEdit.scss";
+
 export interface ModalEditInterface {
   editID: string;
   closeModal: () => void;
@@ -26,6 +31,11 @@ const ModalEdit: React.FC<ModalEditInterface> = (props) => {
         name: value || "John Doe",
       })
     );
+    CloseModal();
+  };
+
+  const DeleteUser = () => {
+    dispatch(deleteUser(props.editID));
     CloseModal();
   };
 
@@ -65,6 +75,9 @@ const ModalEdit: React.FC<ModalEditInterface> = (props) => {
             </div>
             <div className="add-modal-button-cancel" onClick={CloseModal}>
               Cancel
+            </div>
+            <div className="add-modal-button-cancel" onClick={DeleteUser}>
+              Delete Profile
             </div>
           </div>
         </div>

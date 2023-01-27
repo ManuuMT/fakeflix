@@ -44,26 +44,29 @@ export const usersSlice = createSlice({
     : initialState,
   reducers: {
     createUser: (state, action) => {
-      SetLocalStorage("userList", state);
       state.push(action.payload);
+      SetLocalStorage("userList", state);
     },
     modifyUser: (state, action) => {
       const editedUser = action.payload;
       const foundUser = state.find(
         (user: Profile) => user.id === editedUser.id
       );
-
       if (editedUser.name) foundUser.name = editedUser.name;
       if (editedUser.icon) foundUser.icon = editedUser.icon;
-
+      SetLocalStorage("userList", state);
+    },
+    deleteUser: (state, action) => {
+      const userID = action.payload;
+      state = state.filter((user: Profile) => user.id !== userID);
       SetLocalStorage("userList", state);
     },
     resetUser: () => initialState,
   },
 });
 
-export const { createUser, modifyUser, resetUser } = usersSlice.actions;
+export const { createUser, modifyUser, deleteUser, resetUser } =
+  usersSlice.actions;
 
-// Other code such as selectors can use the imported `RootState` type
 export const selectUsers = (state: RootState) => state.users;
 export default usersSlice.reducer;
