@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar } from "./components";
 import "./Home.scss";
-import { Catalogue, Hero } from "./sections";
+import { Catalogue, Footer, Hero } from "./sections";
 
 export interface HomeInterface {}
 
@@ -11,6 +11,7 @@ const Home: React.FC<HomeInterface> = () => {
       <Navbar />
       <Hero />
       <Catalogue />
+      <Footer />
     </div>
   );
 };
