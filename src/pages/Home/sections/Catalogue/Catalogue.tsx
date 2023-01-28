@@ -9,9 +9,9 @@ const Catalogue: React.FC<CatalogueInterface> = () => {
     <div className="catalogue">
       <div className="catalogue-main">
         <Category genre={GENRES.Comedy} />
-        <Category genre={GENRES.Drama} />
+        {/* <Category genre={GENRES.Drama} />
         <Category genre={GENRES.Action} />
-        <Category genre={GENRES.Documentary} />
+        <Category genre={GENRES.Documentary} /> */}
       </div>
     </div>
   );

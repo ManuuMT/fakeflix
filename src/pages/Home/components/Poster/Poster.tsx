@@ -10,6 +10,7 @@ import "./Poster.scss";
 interface PosterInterface {
   poster: string;
   showID: string;
+  zoom: string;
 }
 
 const Poster: React.FC<PosterInterface> = (props) => {
@@ -29,6 +30,12 @@ const Poster: React.FC<PosterInterface> = (props) => {
       console.error(error);
     }
   };
+  const ClassManager = () => {
+    if (isHovered) {
+      return props.zoom === "right" ? "activeRight" : "activeLeft";
+    }
+    return "";
+  };
 
   // * Life Cycle
   useEffect(() => {
@@ -39,7 +46,7 @@ const Poster: React.FC<PosterInterface> = (props) => {
 
   return (
     <div className="poster-container" ref={hoverRef}>
-      <div className={`poster-card ${isHovered ? "active" : ""}`}>
+      <div className={`poster-card ${ClassManager()}`}>
         <img className="poster-card-img" src={posterSrc} alt="tvshow" />
 
         {data ? (

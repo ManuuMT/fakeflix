@@ -11,6 +11,8 @@ export interface CategoryInterface {
 const Category: React.FC<CategoryInterface> = (props) => {
   // * States
   const [data, setData] = useState<any[]>();
+  const [imgsPS, setImgsPS] = useState<number>(6);
+  const [index, setIndex] = useState<number>(0);
   const sliderRef = useRef<HTMLDivElement>(null);
 
   // * Methods
@@ -28,28 +30,46 @@ const Category: React.FC<CategoryInterface> = (props) => {
     const sliderIndex = Number(
       getComputedStyle(slider as Element).getPropertyValue("--slider-index")
     );
-    const imgPerScreen = Number(
-      getComputedStyle(slider as Element).getPropertyValue("--imgs-per-screen")
-    );
 
     if (move === SliderMoves.Right) {
-      if (sliderIndex + 1 >= data!.length / imgPerScreen)
+      if (sliderIndex + 1 >= data!.length / imgsPS!) {
         slider?.style.setProperty("--slider-index", "0");
-      else slider?.style.setProperty("--slider-index", String(sliderIndex + 1));
+        setIndex(0);
+      } else {
+        slider?.style.setProperty("--slider-index", String(sliderIndex + 1));
+        setIndex(sliderIndex + 1);
+      }
     }
     if (move === SliderMoves.Left) {
-      if (sliderIndex - 1 < 0)
+      if (sliderIndex - 1 < 0) {
         slider?.style.setProperty(
           "--slider-index",
-          String(data!.length / imgPerScreen - 1)
+          String(data!.length / imgsPS - 1)
         );
-      else slider?.style.setProperty("--slider-index", String(sliderIndex - 1));
+        setIndex(data!.length / imgsPS - 1);
+      } else {
+        slider?.style.setProperty("--slider-index", String(sliderIndex - 1));
+        setIndex(sliderIndex - 1);
+      }
     }
+  };
+
+  const SetImgsState = () => {
+    const slider = sliderRef?.current;
+    const imgs = Number(
+      getComputedStyle(slider as Element).getPropertyValue("--imgs-per-screen")
+    );
+    setImgsPS(imgs);
   };
 
   // * Life Cycle
   useEffect(() => {
     GetData();
+  }, []);
+
+  useEffect(() => {
+    SetImgsState();
+    window.addEventListener("resize", SetImgsState);
   }, []);
 
   return (
@@ -64,11 +84,12 @@ const Category: React.FC<CategoryInterface> = (props) => {
         </div>
         <div className="slider" ref={sliderRef}>
           {data &&
-            data.map((tvshow: any) => (
+            data.map((tvshow: any, i: number) => (
               <Poster
                 showID={tvshow.id}
                 poster={tvshow.poster_path}
                 key={tvshow.id}
+                zoom={i - imgsPS * index < imgsPS! / 2 ? "right" : "left"}
               />
             ))}
         </div>
