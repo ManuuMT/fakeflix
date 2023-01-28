@@ -30,7 +30,6 @@ const Category: React.FC<CategoryInterface> = (props) => {
     const sliderIndex = Number(
       getComputedStyle(slider as Element).getPropertyValue("--slider-index")
     );
-
     if (move === SliderMoves.Right) {
       if (sliderIndex + 1 >= data!.length / imgsPS!) {
         slider?.style.setProperty("--slider-index", "0");
@@ -62,14 +61,12 @@ const Category: React.FC<CategoryInterface> = (props) => {
     setImgsPS(imgs);
   };
 
-  // * Life Cycle
   useEffect(() => {
     GetData();
-  }, []);
-
-  useEffect(() => {
     SetImgsState();
     window.addEventListener("resize", SetImgsState);
+
+    return () => window.removeEventListener("resize", SetImgsState);
   }, []);
 
   return (

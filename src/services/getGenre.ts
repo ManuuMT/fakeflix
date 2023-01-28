@@ -1,10 +1,16 @@
 import axios from "axios";
 import { GetApiUrl } from "./getAPI";
 
-export const getGenre = async (genreID: string) => {
-  const parameter = `with_genres=${genreID}&with_original_language=en`;
+const getGenreAux = async (genreID: string, page: string) => {
+  const parameter = `with_genres=${genreID}&with_original_language=en&page=${page}`;
   const apiUrl = GetApiUrl("discover/tv", parameter);
   return axios.get(apiUrl).then((res) => res.data.results);
+};
+
+export const getGenre = async (genreID: string) => {
+  const genrePage1 = await getGenreAux(genreID, "1");
+  const genrePage2 = await getGenreAux(genreID, "2");
+  return [...genrePage1, ...genrePage2.slice(0, 4)];
 };
 
 type DictionaryRawValue = number | string;
