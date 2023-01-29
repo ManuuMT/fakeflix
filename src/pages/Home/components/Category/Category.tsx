@@ -65,7 +65,6 @@ const Category: React.FC<CategoryInterface> = (props) => {
     GetData();
     SetImgsState();
     window.addEventListener("resize", SetImgsState);
-
     return () => window.removeEventListener("resize", SetImgsState);
   }, []);
 

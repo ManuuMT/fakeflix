@@ -1,4 +1,4 @@
-type IconDTO = {
+export type IconDTO = {
   src: string;
   alt: string;
 };
