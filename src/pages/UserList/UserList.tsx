@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import iconPlus from "../../assets/icons/iconPlus.png";
 import { useAppSelector } from "../../redux/states/hooks";
@@ -11,17 +11,26 @@ import "./UserList.scss";
 
 const UserList: React.FC = () => {
   // * States
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [openModal, setOpenModal] = useState(false);
 
   const stateUsers = useAppSelector(selectUsers);
 
   // * Methods
-  const HandleClick = (id: string) => window.localStorage.setItem("userID", id);
+  const HandleClick = (id: string) => localStorage.setItem("userID", id);
+
+  // * Life Cycle
+  useEffect(() => {
+    if (loading) {
+      if (!localStorage.getItem("loading")) {
+        localStorage.setItem("loading", "ok");
+      }
+    }
+  }, [loading]);
 
   return (
     <Fragment>
-      {loading ? (
+      {!localStorage.getItem("loading") ? (
         <SplashScreen videoEnded={setLoading} />
       ) : (
         <Fragment>
