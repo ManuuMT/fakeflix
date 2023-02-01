@@ -1,7 +1,7 @@
 {
   "name": "fakeflix",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
-    "@types/react-redux": "^7.1.25",
     "axios": "^1.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -23,6 +22,7 @@
     "@types/react-dom": "^18.0.9",
     "@types/react-router-dom": "^5.3.3",
     "@vitejs/plugin-react": "^3.0.0",
+    "@types/react-redux": "^7.1.25",
     "sass": "^1.57.1",
     "typescript": "^4.9.3",
     "vite": "^4.0.0"
