@@ -2,16 +2,21 @@ import { GENRES } from "../../../../services/getGenre";
 import { Category } from "../../components/Category";
 import "./Catalogue.scss";
 
-export interface CatalogueInterface {}
-
-const Catalogue: React.FC<CatalogueInterface> = () => {
+const Catalogue: React.FC = () => {
+  const genresArr = [
+    GENRES.Comedy,
+    GENRES.Drama,
+    GENRES.Action,
+    GENRES.Documentary,
+    GENRES.WarPolitics,
+    GENRES.Family,
+  ];
   return (
     <div className="catalogue">
       <div className="catalogue-main">
-        <Category genre={GENRES.Comedy} />
-        {/* <Category genre={GENRES.Drama} />
-        <Category genre={GENRES.Action} />
-        <Category genre={GENRES.Documentary} /> */}
+        {genresArr.map((genre) => (
+          <Category genre={genre} />
+        ))}
       </div>
     </div>
   );

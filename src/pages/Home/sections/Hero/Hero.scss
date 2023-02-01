@@ -1,28 +1,51 @@
-.white {
-  filter: brightness(0) saturate(100%) invert(98%) sepia(0%) saturate(0%)
-    hue-rotate(338deg) brightness(101%) contrast(104%);
-}
-
-$filterWhite: brightness(0) saturate(100%) invert(98%) sepia(0%) saturate(0%)
-  hue-rotate(338deg) brightness(101%) contrast(104%);
-
 .hero {
   width: 100vw;
   height: 100vh;
 }
 
+.hero-main {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
 .hero-title {
   position: absolute;
-  width: 600px;
   top: 30%;
-  left: 1.5%;
+  left: 5%;
+  transition: all 1.2s ease-in-out;
+}
+
+.hero-title-img {
+  width: 450px;
+  transition: all 1.2s ease-in-out;
+}
+
+.hero-title.active {
+  top: 50%;
+  left: 5%;
+  .hero-title-img {
+    width: 350px;
+  }
 }
 
 .hero-description {
-  width: 500px;
+  width: 50%;
   position: absolute;
   top: 50%;
   left: 5%;
+  font-size: 14px;
+  transition: all 1.2s ease-in-out;
+
+  p {
+    margin: 0;
+    transition: all 1.2s ease-in-out;
+  }
+}
+
+.hero-description.active {
+  transform: translateY(100%);
+  opacity: 0;
 }
 
 .hero-button-play {
@@ -35,6 +58,7 @@ $filterWhite: brightness(0) saturate(100%) invert(98%) sepia(0%) saturate(0%)
   align-items: center;
   border: none;
   position: absolute;
+  z-index: 1;
   top: 70%;
   left: 5%;
   cursor: pointer;
@@ -61,13 +85,13 @@ $filterWhite: brightness(0) saturate(100%) invert(98%) sepia(0%) saturate(0%)
   align-items: center;
   border: none;
   position: absolute;
+  z-index: 1;
   top: 70%;
-  left: 15%;
+  left: 14%;
   cursor: pointer;
 
   img {
     width: 30px;
-    filter: $filterWhite;
     margin-right: 5px;
   }
 }
@@ -104,9 +128,12 @@ $filterWhite: brightness(0) saturate(100%) invert(98%) sepia(0%) saturate(0%)
   align-items: center;
 
   img {
-    filter: $filterWhite;
     width: 20px;
   }
+}
+
+.hero-button:hover {
+  cursor: pointer;
 }
 
 .hero-clasif {
@@ -114,7 +141,7 @@ $filterWhite: brightness(0) saturate(100%) invert(98%) sepia(0%) saturate(0%)
   width: 80px;
   padding: 0 10px;
   color: #fff;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.1);
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -122,4 +149,9 @@ $filterWhite: brightness(0) saturate(100%) invert(98%) sepia(0%) saturate(0%)
   right: 0px;
   top: 75%;
   border-left: 3px solid #fff;
+}
+
+.white {
+  filter: brightness(0) saturate(100%) invert(98%) sepia(0%) saturate(0%)
+    hue-rotate(338deg) brightness(101%) contrast(104%);
 }

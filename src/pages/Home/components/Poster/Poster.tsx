@@ -58,7 +58,7 @@ const Poster: React.FC<PosterInterface> = (props) => {
                 </div>
                 <div className="pc-icon-default">
                   <img
-                    className="pc-icon-default-img"
+                    className="pc-icon-default-img white"
                     alt="add"
                     src={iconPlus}
                   />
@@ -83,7 +83,9 @@ const Poster: React.FC<PosterInterface> = (props) => {
               <div className="pc-seasons-match">99% Match </div>
               <div className="pc-seasons-clasif">13 +</div>
               <div className="pc-seasons-episodes">
-                {`${data.number_of_seasons} Seasons`}
+                {`${data.number_of_seasons} ${
+                  data.number_of_seasons == "1" ? "Season" : "Seasons"
+                }`}
               </div>
               <div className="pc-seasons-quality">HD</div>
             </div>

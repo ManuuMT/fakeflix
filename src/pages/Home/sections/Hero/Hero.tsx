@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Hero.scss";
 import iconReload from "../../../../assets/icons/iconReload.png";
 import iconMute from "../../../../assets/icons/iconMute.png";
@@ -14,25 +14,40 @@ const Hero: React.FC<HeroInterface> = () => {
   // * States
   const [videoEnded, setVideoEnded] = useState(false);
   const [muted, setMuted] = useState(true);
+  const [animation, setAnimation] = useState(false);
+
+  // * Methods
+
+  // * Life Cycle
+  useEffect(() => {
+    setTimeout(() => {
+      setAnimation(true);
+    }, 4000);
+  }, []);
 
   return (
     <div className="hero">
-      <img src={robotLogo} alt="robot" className="hero-title" />
-      <div className="hero-description">
-        <p>
-          A contemporary and culturally resonant drama about a young programmer,
-          Elliot, who suffers from a debilitating anti-social disorder and
-          decides that he can only connect to people by hacking them. He wields
-          his skills as a weapon to protect the people that he cares about.
-        </p>
+      <div className="hero-main">
+        <div className={`hero-title ${animation ? "active" : ""}`}>
+          <img src={robotLogo} alt="robot" className="hero-title-img" />
+        </div>
+        <div className={`hero-description ${animation ? "active" : ""}`}>
+          <p>
+            A contemporary and culturally resonant drama about a young
+            programmer, Elliot, who suffers from a debilitating anti-social
+            disorder and decides that he can only connect to people by hacking
+            them. He wields his skills as a weapon to protect the people that he
+            cares about.
+          </p>
+        </div>
       </div>
       <button className="hero-button-play">
         <img src={iconArrow} alt="play" />
-        Reproducir
+        Play
       </button>
       <button className="hero-button-info">
-        <img src={iconInfo} alt="info" />
-        Más información
+        <img src={iconInfo} alt="info" className="white" />
+        More info
       </button>
       {videoEnded ? (
         <img className="hero-poster" src={mrRobotBack} alt="robot" />
@@ -47,12 +62,19 @@ const Hero: React.FC<HeroInterface> = () => {
         </video>
       )}
       {videoEnded ? (
-        <button className="hero-button" onClick={() => setVideoEnded(false)}>
+        <button
+          className="hero-button white"
+          onClick={() => setVideoEnded(false)}
+        >
           <img src={iconReload} alt="reload" />
         </button>
       ) : (
         <button className="hero-button" onClick={() => setMuted(!muted)}>
-          <img src={muted ? iconMute : iconUnmute} alt="volume" />
+          <img
+            src={muted ? iconMute : iconUnmute}
+            alt="volume"
+            className="white"
+          />
         </button>
       )}
       <div className="hero-clasif">13+</div>
