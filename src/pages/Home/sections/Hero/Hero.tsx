@@ -8,8 +8,6 @@ const Hero: React.FC = () => {
   const [muted, setMuted] = useState(true);
   const [animation, setAnimation] = useState(false);
 
-  // * Methods
-
   // * Life Cycle
   useEffect(() => {
     setTimeout(() => {

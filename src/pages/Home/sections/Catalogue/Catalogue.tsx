@@ -11,6 +11,7 @@ const Catalogue: React.FC = () => {
     GENRES.WarPolitics,
     GENRES.Family,
   ];
+
   return (
     <div className="catalogue">
       <div className="catalogue-main">
