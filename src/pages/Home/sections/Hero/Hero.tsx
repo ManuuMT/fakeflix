@@ -1,16 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./Hero.scss";
-import iconReload from "../../../../assets/icons/iconReload.png";
-import iconMute from "../../../../assets/icons/iconMute.png";
-import iconUnmute from "../../../../assets/icons/iconUnmute.png";
-import robotLogo from "../../../../assets/mrRobotLogo.png";
-import iconArrow from "../../../../assets/icons/iconArrow.png";
-import iconInfo from "../../../../assets/icons/iconInfo.png";
-import mrRobotBack from "../../../../assets/mrRobotBack.jpg";
+import { HeroImages } from "./Hero+Helper";
 
-export interface HeroInterface {}
-
-const Hero: React.FC<HeroInterface> = () => {
+const Hero: React.FC = () => {
   // * States
   const [videoEnded, setVideoEnded] = useState(false);
   const [muted, setMuted] = useState(true);
@@ -22,14 +14,21 @@ const Hero: React.FC<HeroInterface> = () => {
   useEffect(() => {
     setTimeout(() => {
       setAnimation(true);
-    }, 4000);
+    }, 5000);
+    setTimeout(() => {
+      setAnimation(false);
+    }, 27000);
   }, []);
 
   return (
     <div className="hero">
       <div className="hero-main">
         <div className={`hero-title ${animation ? "active" : ""}`}>
-          <img src={robotLogo} alt="robot" className="hero-title-img" />
+          <img
+            src={HeroImages.robotlogo.src}
+            className="hero-title-img"
+            alt={HeroImages.robotlogo.alt}
+          />
         </div>
         <div className={`hero-description ${animation ? "active" : ""}`}>
           <p>
@@ -42,15 +41,23 @@ const Hero: React.FC<HeroInterface> = () => {
         </div>
       </div>
       <button className="hero-button-play">
-        <img src={iconArrow} alt="play" />
+        <img src={HeroImages.arrow.src} alt={HeroImages.arrow.alt} />
         Play
       </button>
       <button className="hero-button-info">
-        <img src={iconInfo} alt="info" className="white" />
+        <img
+          src={HeroImages.info.src}
+          className="white"
+          alt={HeroImages.arrow.alt}
+        />
         More info
       </button>
       {videoEnded ? (
-        <img className="hero-poster" src={mrRobotBack} alt="robot" />
+        <img
+          className="hero-poster"
+          src={HeroImages.robotback.src}
+          alt={HeroImages.robotback.alt}
+        />
       ) : (
         <video
           autoPlay
@@ -66,14 +73,14 @@ const Hero: React.FC<HeroInterface> = () => {
           className="hero-button white"
           onClick={() => setVideoEnded(false)}
         >
-          <img src={iconReload} alt="reload" />
+          <img src={HeroImages.reload.src} alt={HeroImages.reload.alt} />
         </button>
       ) : (
         <button className="hero-button" onClick={() => setMuted(!muted)}>
           <img
-            src={muted ? iconMute : iconUnmute}
-            alt="volume"
+            src={muted ? HeroImages.mute.src : HeroImages.unmute.src}
             className="white"
+            alt={HeroImages.mute.alt}
           />
         </button>
       )}
